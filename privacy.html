@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — OrionClean</title>
+<meta name="description" content="OrionClean Privacy Policy — we collect nothing. On-device AI, zero data transmission, no accounts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cyan: #00C2FF;
+    --purple: #7B2FFF;
+    --green: #00E5A0;
+    --bg: #060610;
+    --bg2: #0A0A1E;
+    --bg3: #10102A;
+    --white: #F0F0FF;
+    --muted: #6666AA;
+    --border: rgba(0,194,255,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Syne', sans-serif;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,194,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,194,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .orb1 { width: 500px; height: 500px; background: rgba(123,47,255,0.1); top: -150px; right: -150px; }
+  .orb2 { width: 300px; height: 300px; background: rgba(0,194,255,0.08); bottom: 20%; left: -100px; }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(6,6,16,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: var(--cyan);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--white); }
+
+  nav a.back {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  nav a.back:hover { color: var(--cyan); }
+
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 140px 40px 100px;
+  }
+
+  .page-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--cyan);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .page-title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .page-title span {
+    background: linear-gradient(135deg, var(--cyan), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .effective-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 48px;
+    letter-spacing: 0.08em;
+  }
+
+  /* Summary badges */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 64px;
+    padding: 28px;
+    background: rgba(0,229,160,0.04);
+    border: 1px solid rgba(0,229,160,0.15);
+    border-radius: 16px;
+  }
+
+  .summary-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .summary-icon { font-size: 1.4rem; }
+
+  .summary-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* Sections */
+  .policy-section {
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .policy-section:last-of-type { border-bottom: none; }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--purple);
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+    letter-spacing: 0.01em;
+  }
+
+  .section-title .accent { color: var(--cyan); }
+
+  p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.8;
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+
+  p strong { color: var(--white); font-weight: 700; }
+
+  ul {
+    list-style: none;
+    margin: 12px 0 16px;
+  }
+
+  ul li {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.7;
+    padding: 8px 0 8px 28px;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  ul li:last-child { border-bottom: none; }
+
+  ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--cyan);
+    font-weight: 700;
+  }
+
+  ul li strong { color: var(--white); }
+
+  .highlight-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--cyan);
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+
+  .highlight-box p {
+    margin: 0;
+    font-size: 0.92rem;
+  }
+
+  .highlight-box.green {
+    border-left-color: var(--green);
+    background: rgba(0,229,160,0.04);
+  }
+
+  .contact-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-top: 20px;
+  }
+
+  .contact-card h4 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--cyan);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .contact-card a {
+    color: var(--cyan);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(0,194,255,0.3);
+    transition: border-color 0.2s;
+  }
+  .contact-card a:hover { border-color: var(--cyan); }
+
+  .contact-card p { margin: 4px 0 0; }
+
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid var(--border);
+    padding: 32px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  footer p { font-size: 0.8rem; color: var(--muted); }
+  footer a { color: var(--muted); text-decoration: none; font-size: 0.8rem; margin-left: 20px; transition: color 0.2s; }
+  footer a:hover { color: var(--cyan); }
+
+  @media (max-width: 640px) {
+    .wrapper { padding: 120px 20px 80px; }
+    nav { padding: 16px 20px; }
+    .summary-grid { grid-template-columns: repeat(2, 1fr); }
+    footer { flex-direction: column; text-align: center; }
+    footer a { margin: 0 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">⬡ ORION<span>CLEAN</span></a>
+  <a href="index.html" class="back">← Back to Home</a>
+</nav>
+
+<div class="wrapper">
+
+  <div class="page-label">// legal</div>
+  <h1 class="page-title">Privacy <span>Policy</span></h1>
+  <div class="effective-date">Effective Date: January 1, 2026 &nbsp;·&nbsp; App: OrionClean v1.0.0 &nbsp;·&nbsp; Platform: macOS</div>
+
+  <!-- TL;DR Summary -->
+  <div class="summary-grid">
+    <div class="summary-item">
+      <div class="summary-icon">🚫</div>
+      <div class="summary-label">No Data Collected</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-icon">🔒</div>
+      <div class="summary-label">No Network Requests</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-icon">👤</div>
+      <div class="summary-label">No Accounts</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-icon">🤖</div>
+      <div class="summary-label">On-Device AI Only</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-icon">📍</div>
+      <div class="summary-label">No Tracking</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-icon">✅</div>
+      <div class="summary-label">Apple Guidelines Compliant</div>
+    </div>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="policy-section">
+    <div class="section-num">01</div>
+    <h2 class="section-title">Overview</h2>
+    <p>OrionClean ("the App") is developed and maintained by <strong>Mrinal Singh Raja</strong> ("we", "us", "our"). This Privacy Policy explains how OrionClean handles your information when you use the App on your Mac.</p>
+    <div class="highlight-box green">
+      <p><strong>The short version:</strong> OrionClean collects absolutely nothing about you. All processing happens on your device. No data is ever transmitted to us or any third party.</p>
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="policy-section">
+    <div class="section-num">02</div>
+    <h2 class="section-title">Information We <span class="accent">Do Not</span> Collect</h2>
+    <p>OrionClean does not collect, store, transmit, or share any of the following:</p>
+    <ul>
+      <li><strong>Personal identification information</strong> — name, email address, phone number, or any other identifiers</li>
+      <li><strong>Usage data or analytics</strong> — how you use the app, which features you tap, session duration, or crash reports sent externally</li>
+      <li><strong>File contents</strong> — OrionClean scans file metadata (names, sizes, dates) to identify junk files but never reads or transmits the contents of your files</li>
+      <li><strong>System information</strong> — hardware specs, serial numbers, or device identifiers are never transmitted</li>
+      <li><strong>Location data</strong> — location permission (if granted) is used solely to identify your WiFi network name and is never stored or transmitted</li>
+      <li><strong>Advertising identifiers</strong> — no IDFA, fingerprinting, or advertising tracking of any kind</li>
+      <li><strong>Payment information</strong> — the App is free and processes no payments</li>
+    </ul>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="policy-section">
+    <div class="section-num">03</div>
+    <h2 class="section-title">Local Data Storage</h2>
+    <p>OrionClean stores certain data <strong>locally on your device only</strong> using Apple's UserDefaults system. This data never leaves your Mac and includes:</p>
+    <ul>
+      <li><strong>App settings and preferences</strong> — your scan configuration, safety settings, and UI preferences</li>
+      <li><strong>Scan history</strong> — a log of previous scans and cleanup results for your own reference</li>
+      <li><strong>Achievement progress</strong> — gamification state and engagement metrics</li>
+      <li><strong>Weekly report data</strong> — aggregated summaries of your cleanup activity</li>
+    </ul>
+    <p>You can clear all locally stored data at any time by uninstalling OrionClean or resetting app data in macOS System Settings.</p>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="policy-section">
+    <div class="section-num">04</div>
+    <h2 class="section-title">On-Device AI</h2>
+    <p>OrionClean uses Apple's <strong>FoundationModels framework</strong> (Apple Intelligence) to power its AI features, including the AI Assistant, file safety analysis, system diagnostics, and weekly reports.</p>
+    <div class="highlight-box">
+      <p>All AI processing runs entirely on your Mac. No prompts, file information, or results are sent to any external server — including Apple's servers or ours. The AI has no internet connection.</p>
+    </div>
+    <p>On devices or macOS versions where FoundationModels is unavailable, OrionClean falls back to local heuristic analysis. No network requests are made in either case.</p>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="policy-section">
+    <div class="section-num">05</div>
+    <h2 class="section-title">Network Activity</h2>
+    <p>OrionClean makes <strong>zero HTTP requests to external servers</strong>. The only network-related activity in the App is:</p>
+    <ul>
+      <li><strong>Network Quality testing</strong> — uses macOS's built-in <code style="font-family:'JetBrains Mono',monospace;font-size:0.85em;color:var(--green)">networkQuality</code> system tool and local ping utilities. This tests your internet connection performance but does not transmit any personal data.</li>
+      <li><strong>WiFi name detection</strong> — reads your current WiFi network name locally. Never transmitted.</li>
+    </ul>
+    <p>There are no analytics SDKs, crash reporting services, ad networks, or third-party frameworks in OrionClean that communicate with external servers.</p>
+  </div>
+
+  <!-- Section 6 -->
+  <div class="policy-section">
+    <div class="section-num">06</div>
+    <h2 class="section-title">File System Access</h2>
+    <p>OrionClean requests access to your file system to perform its core function — scanning for and removing junk files. Specifically:</p>
+    <ul>
+      <li><strong>Full Disk Access (FDA)</strong> — requested to scan system caches, logs, and application data across your Mac. You must explicitly grant this in macOS System Settings.</li>
+      <li><strong>User-selected files</strong> — you choose which files to delete. OrionClean never automatically deletes anything without your confirmation.</li>
+    </ul>
+    <p>File access is used exclusively for local scanning and cleanup. No file contents, names, or paths are transmitted externally.</p>
+  </div>
+
+  <!-- Section 7 -->
+  <div class="policy-section">
+    <div class="section-num">07</div>
+    <h2 class="section-title">Third-Party Services</h2>
+    <p>OrionClean does <strong>not</strong> integrate with any third-party analytics, advertising, crash reporting, or data collection services. There are no third-party SDKs in the App that collect or transmit user data.</p>
+    <p>The App is distributed through the <strong>Mac App Store</strong>. Apple's own privacy practices govern the App Store experience and any data Apple collects as part of distribution. Please refer to Apple's Privacy Policy at <a href="https://www.apple.com/privacy/" target="_blank" style="color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,194,255,0.3)">apple.com/privacy</a> for details.</p>
+  </div>
+
+  <!-- Section 8 -->
+  <div class="policy-section">
+    <div class="section-num">08</div>
+    <h2 class="section-title">Children's Privacy</h2>
+    <p>OrionClean does not knowingly collect any information from children under the age of 13. The App collects no personal information from any user regardless of age. The App is rated <strong>4+</strong> on the Mac App Store.</p>
+  </div>
+
+  <!-- Section 9 -->
+  <div class="policy-section">
+    <div class="section-num">09</div>
+    <h2 class="section-title">Changes to This Policy</h2>
+    <p>If we make material changes to this Privacy Policy, we will update the effective date at the top of this page and, where appropriate, notify users through an App Store update notice. We encourage you to review this policy periodically.</p>
+    <p>Continued use of OrionClean after changes are posted constitutes your acceptance of the updated policy.</p>
+  </div>
+
+  <!-- Section 10 -->
+  <div class="policy-section">
+    <div class="section-num">10</div>
+    <h2 class="section-title">Contact Us</h2>
+    <p>If you have any questions or concerns about this Privacy Policy or OrionClean's data practices, please contact us:</p>
+    <div class="contact-card">
+      <h4>Developer</h4>
+      <p style="color: var(--white); font-weight: 600; margin-bottom: 8px;">Mrinal Singh Raja</p>
+      <a href="mailto:mrinalsinghraja@gmail.com">mrinalsinghraja@gmail.com</a>
+      <p style="margin-top: 12px;">
+        <a href="https://github.com/mrinalsinghraja/orionclean" target="_blank">github.com/mrinalsinghraja/orionclean</a>
+      </p>
+      <p style="margin-top: 12px; font-size: 0.82rem;">We typically respond within 48 hours.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Mrinal Singh Raja · OrionClean · All rights reserved.</p>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="mailto:mrinalsinghraja@gmail.com">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
