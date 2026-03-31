@@ -389,24 +389,25 @@
   <div class="policy-section">
     <div class="section-num">05</div>
     <h2 class="section-title">Network Activity</h2>
-    <p>OrionClean makes <strong>zero HTTP requests to external servers</strong>. The only network-related activity in the App is:</p>
+    <p>OrionClean makes <strong>no requests to external servers for data collection, analytics, or tracking</strong>. The only network-related activity in the App is:</p>
     <ul>
-      <li><strong>Network Quality testing</strong> — uses macOS's built-in <code style="font-family:'JetBrains Mono',monospace;font-size:0.85em;color:var(--green)">networkQuality</code> system tool and local ping utilities. This tests your internet connection performance but does not transmit any personal data.</li>
-      <li><strong>WiFi name detection</strong> — reads your current WiFi network name locally. Never transmitted.</li>
+      <li><strong>Network Quality testing</strong> — uses outbound client connections to measure your internet connection performance (bandwidth, latency, packet loss). This is a diagnostic-only feature. No personal data is transmitted — only standard network probe packets.</li>
+      <li><strong>WiFi name detection</strong> — reads your current WiFi network name locally for display purposes only. Never stored or transmitted.</li>
     </ul>
-    <p>There are no analytics SDKs, crash reporting services, ad networks, or third-party frameworks in OrionClean that communicate with external servers.</p>
+    <p>The Network Quality feature does not act as a VPN, packet sniffer, firewall, or server. It does not listen for incoming connections. There are no analytics SDKs, crash reporting services, ad networks, or third-party frameworks in OrionClean that communicate with external servers.</p>
   </div>
 
   <!-- Section 6 -->
   <div class="policy-section">
     <div class="section-num">06</div>
     <h2 class="section-title">File System Access</h2>
-    <p>OrionClean requests access to your file system to perform its core function — scanning for and removing junk files. Specifically:</p>
+    <p>OrionClean uses App Sandbox and requests access to your file system only through standard macOS user-granted folder access. Specifically:</p>
     <ul>
-      <li><strong>Full Disk Access (FDA)</strong> — requested to scan system caches, logs, and application data across your Mac. You must explicitly grant this in macOS System Settings.</li>
-      <li><strong>User-selected files</strong> — you choose which files to delete. OrionClean never automatically deletes anything without your confirmation.</li>
+      <li><strong>User-selected folder access</strong> — when a scan requires access to a folder outside the app container, OrionClean prompts you via the standard macOS open panel. You choose which folders to grant access to. This permission is persisted and reused through a security-scoped access flow.</li>
+      <li><strong>App container</strong> — OrionClean can always access its own app container for settings, history, and cached data.</li>
+      <li><strong>No Full Disk Access required</strong> — OrionClean does not request or require Full Disk Access. All scanning and cleanup operates within user-granted folder permissions only.</li>
     </ul>
-    <p>File access is used exclusively for local scanning and cleanup. No file contents, names, or paths are transmitted externally.</p>
+    <p>File access is used exclusively for local scanning and cleanup. No file contents, names, or paths are transmitted externally. You are always in control — OrionClean never automatically deletes anything without your confirmation.</p>
   </div>
 
   <!-- Section 7 -->
@@ -440,7 +441,7 @@
     <div class="contact-card">
       <h4>Developer</h4>
       <p style="color: var(--white); font-weight: 600; margin-bottom: 8px;">Mrinal Singh Raja</p>
-      <a href="mailto:mrinalsinghraja@gmail.com">mrinalsinghraja@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#9cf1eef5f2fdf0eff5f2fbf4eefdf6fddcfbf1fdf5f0b2fff3f1"><span class="__cf_email__" data-cfemail="620f100b0c030e110b0c050a1003080322050f030b0e4c010d0f">[email&#160;protected]</span></a>
       <p style="margin-top: 12px;">
         <a href="https://github.com/mrinalsinghraja/orionclean" target="_blank">github.com/mrinalsinghraja/orionclean</a>
       </p>
@@ -451,12 +452,4 @@
 </div>
 
 <footer>
-  <p>© 2026 Mrinal Singh Raja · OrionClean · All rights reserved.</p>
-  <div>
-    <a href="index.html">Home</a>
-    <a href="mailto:mrinalsinghraja@gmail.com">Contact</a>
-  </div>
-</footer>
-
-</body>
-</html>
+  <p>© 2026 Mrinal Singh Raja · OrionClean · All rights rese
