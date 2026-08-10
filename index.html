@@ -3,101 +3,202 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OrionClean — MSRX</title>
-  <meta name="description" content="AI System Cleaner & Optimizer for macOS. Smart junk cleanup, duplicate finder, and privacy protection.">
+  <title>MSRX Clean — Support</title>
+  <meta name="description" content="Support for MSRX Clean: a private disk cleaner that shows you every file before it removes it, and lets you undo. Formerly OrionClean.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #ffffff; --surface: #f5f5f7; --border: rgba(0,0,0,0.06);
-      --text: #1d1d1f; --text2: #6e6e73; --text3: #a1a1a6;
+      --bg: #ffffff; --surface: #f5f5f7; --border: rgba(0,0,0,0.08);
+      --text: #1d1d1f; --text2: #55555a; --text3: #6e6e73;
       --cyan: #00c4df; --purple: #8b5cf6;
+      /* Link ink is deliberately darker than the brand purple: #8b5cf6 measures
+         4.23:1 on white and fails body-text contrast. #6d28d9 measures 7.10:1. */
+      --link: #6d28d9;
       --gradient: linear-gradient(135deg, #00c4df 0%, #8b5cf6 100%);
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
-    nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
-    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+    a:focus-visible, summary:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 4px; }
+    nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.88); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1000px; margin: 0 auto; padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .nav-logo svg { width: 26px; height: 32px; }
     .nav-logo-text { font-size: 16px; font-weight: 700; color: var(--text); }
-    .nav-links { display: flex; gap: 24px; }
-    .nav-links a { font-size: 14px; color: var(--text2); text-decoration: none; transition: color 0.15s; }
+    .nav-links { display: flex; gap: 22px; }
+    .nav-links a { font-size: 14px; color: var(--text3); text-decoration: none; transition: color 0.15s; }
     .nav-links a:hover { color: var(--text); }
-    .hero { max-width: 1100px; margin: 0 auto; padding: 80px 24px 60px; text-align: center; }
-    .app-icon { width: 120px; height: 120px; border-radius: 28px; box-shadow: 0 8px 40px rgba(0,0,0,0.12); margin: 0 auto 32px; background: linear-gradient(135deg, #00c4df 0%, #8b5cf6 100%); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .app-icon-initials { font-size: 42px; font-weight: 800; color: white; letter-spacing: -2px; }
-    .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text3); margin-bottom: 16px; }
-    .hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.08; letter-spacing: -0.02em; color: var(--text); margin-bottom: 16px; }
+    .hero { max-width: 1000px; margin: 0 auto; padding: 72px 24px 52px; text-align: center; }
+    .app-icon { width: 108px; height: 108px; border-radius: 26px; box-shadow: 0 8px 40px rgba(0,0,0,0.12); margin: 0 auto 28px; background: var(--gradient); display: flex; align-items: center; justify-content: center; }
+    .app-icon svg { width: 54px; height: 54px; }
+    .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text3); margin-bottom: 14px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 50px); font-weight: 800; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 16px; }
     .hero h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero p { font-size: 18px; color: var(--text2); max-width: 520px; margin: 0 auto 36px; line-height: 1.6; }
+    .hero .lede { font-size: 18px; color: var(--text2); max-width: 560px; margin: 0 auto 14px; line-height: 1.6; }
+    .renamed { font-size: 14px; color: var(--text3); margin-bottom: 32px; }
     .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 14px; background: var(--gradient); color: white; font-size: 15px; font-weight: 600; text-decoration: none; transition: opacity 0.15s; box-shadow: 0 4px 20px rgba(0,196,223,0.3); }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 14px; background: var(--gradient); color: #fff; font-size: 15px; font-weight: 600; text-decoration: none; transition: opacity 0.15s; box-shadow: 0 4px 20px rgba(0,196,223,0.28); }
     .btn-primary:hover { opacity: 0.88; }
-    .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 14px; background: var(--surface); color: var(--text); font-size: 15px; font-weight: 500; text-decoration: none; border: 1px solid var(--border); transition: all 0.15s; }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 14px; background: var(--surface); color: var(--text); font-size: 15px; font-weight: 500; text-decoration: none; border: 1px solid var(--border); transition: background 0.15s; }
     .btn-secondary:hover { background: #ebebed; }
-    .features { max-width: 1100px; margin: 0 auto; padding: 60px 24px; }
-    .section-title { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text3); text-align: center; margin-bottom: 48px; }
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-    .feature-card { background: var(--surface); border-radius: 20px; padding: 28px; border: 1px solid var(--border); }
-    .feature-icon { font-size: 28px; margin-bottom: 12px; }
-    .feature-card h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    section.band { max-width: 1000px; margin: 0 auto; padding: 56px 24px; }
+    .section-title { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text3); text-align: center; margin-bottom: 40px; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+    .feature-card { background: var(--surface); border-radius: 18px; padding: 26px; border: 1px solid var(--border); }
+    .feature-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
     .feature-card p { font-size: 14px; color: var(--text2); line-height: 1.6; }
-    .divider { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .faq { max-width: 760px; margin: 0 auto; }
+    details { border-bottom: 1px solid var(--border); padding: 18px 0; }
+    details summary { font-size: 16px; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after { content: "+"; font-size: 20px; font-weight: 400; color: var(--text3); line-height: 1; flex-shrink: 0; }
+    details[open] summary::after { content: "\2013"; }
+    details p { font-size: 15px; color: var(--text2); line-height: 1.7; margin-top: 12px; }
+    details p + p { margin-top: 10px; }
+    details a { color: var(--link); }
+    .contact-box { max-width: 760px; margin: 48px auto 0; background: var(--surface); border-radius: 18px; padding: 28px; border: 1px solid var(--border); text-align: center; }
+    .contact-box h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .contact-box p { font-size: 15px; color: var(--text2); margin-bottom: 6px; }
+    .contact-box a { color: var(--link); font-weight: 500; text-decoration: none; }
+    .contact-box a:hover { text-decoration: underline; }
+    .meta { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--border); }
+    .meta div { font-size: 13px; color: var(--text3); }
+    .meta strong { display: block; font-size: 14px; color: var(--text); font-weight: 600; margin-bottom: 2px; }
+    .divider { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
     .divider hr { border: none; border-top: 1px solid var(--border); }
-    footer { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    footer { max-width: 1000px; margin: 0 auto; padding: 30px 24px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     .footer-left { font-size: 13px; color: var(--text3); }
     .footer-right { display: flex; gap: 20px; }
-    .footer-right a { font-size: 13px; color: var(--text3); text-decoration: none; transition: color 0.15s; }
+    .footer-right a { font-size: 13px; color: var(--text3); text-decoration: none; }
     .footer-right a:hover { color: var(--text2); }
-    @media (max-width: 600px) { .hero { padding: 48px 16px 40px; } .features { padding: 40px 16px; } footer { flex-direction: column; align-items: flex-start; } }
+    @media (max-width: 600px) { .hero { padding: 44px 16px 36px; } section.band { padding: 40px 16px; } footer { flex-direction: column; align-items: flex-start; } }
   </style>
 </head>
 <body>
   <nav>
     <div class="nav-inner">
       <a href="https://msrx.co.in" class="nav-logo">
-        <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs><linearGradient id="mg" x1="0" y1="0" x2="100" y2="120" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#00c4df"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs>
           <path d="M6 110 L6 12 L50 62 L94 12 L94 110 L76 110 L76 46 L50 80 L24 46 L24 110 Z" fill="url(#mg)"/>
         </svg>
         <span class="nav-logo-text">MSRX</span>
       </a>
-      <nav class="nav-links">
-        <a href="https://msrx.co.in/#apps">All Apps</a>
-        <a href="mailto:mrinalsinghraja@gmail.com">Contact</a>
+      <nav class="nav-links" aria-label="Site">
+        <a href="#faq">Support</a>
         <a href="privacy.html">Privacy</a>
+        <a href="mailto:mrinalsinghraja@gmail.com">Contact</a>
+        <a href="https://msrx.co.in/#apps">All Apps</a>
       </nav>
     </div>
   </nav>
+
   <section class="hero">
-    <div class="app-icon"><span class="app-icon-initials">OC</span></div>
-    <p class="eyebrow">macOS · MSRX</p>
-    <h1>OrionClean<br><span>AI System Cleaner</span></h1>
-    <p>Reclaim disk space and boost performance with AI-powered junk detection, duplicate scanning, and privacy cleanup — all in one elegant macOS app.</p>
+    <div class="app-icon">
+      <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M6 110 L6 12 L50 62 L94 12 L94 110 L76 110 L76 46 L50 80 L24 46 L24 110 Z" fill="#ffffff"/>
+      </svg>
+    </div>
+    <p class="eyebrow">Support · MSRX</p>
+    <h1>MSRX Clean<br><span>Private disk cleanup</span></h1>
+    <p class="lede">Finds the space you can get back, shows you exactly what it proposes to remove, and lets you undo it. Nothing leaves your computer.</p>
+    <p class="renamed">Version 2.0 · Previously released as OrionClean. Same app, new name.</p>
     <div class="cta-row">
-      <a href="https://apps.apple.com/us/app/orionclean/id6761111012?mt=12" class="btn-primary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        Download on Mac App Store
+      <a href="https://apps.apple.com/us/app/id6761111012?mt=12" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        View on the App Store
       </a>
-      <a href="https://msrx.co.in" class="btn-secondary">More MSRX Apps →</a>
+      <a href="mailto:mrinalsinghraja@gmail.com?subject=MSRX%20Clean%20support" class="btn-secondary">Email Support →</a>
     </div>
   </section>
+
   <div class="divider"><hr></div>
-  <section class="features">
-    <p class="section-title">Key Features</p>
+
+  <section class="band">
+    <p class="section-title">What it finds</p>
     <div class="features-grid">
-      <div class="feature-card"><div class="feature-icon">🧹</div><h3>Smart Junk Cleanup</h3><p>AI identifies caches, logs, and temporary files safe to remove, freeing gigabytes with one click.</p></div>
-      <div class="feature-card"><div class="feature-icon">🔍</div><h3>Duplicate Finder</h3><p>Scans your entire drive to surface exact and near-duplicate files, so you remove the right ones.</p></div>
-      <div class="feature-card"><div class="feature-icon">📦</div><h3>Large File Scanner</h3><p>Instantly visualize and sort the biggest space hogs on your Mac to reclaim storage fast.</p></div>
-      <div class="feature-card"><div class="feature-icon">🔒</div><h3>Privacy Data Cleaner</h3><p>Wipes browser history, download records, and app traces to keep your digital footprint clean.</p></div>
+      <div class="feature-card"><h3>Caches, logs and stale downloads</h3><p>Application caches, diagnostic logs, browser caches and cookies, and downloads you have not touched in a month.</p></div>
+      <div class="feature-card"><h3>Duplicates and look-alike photos</h3><p>Duplicates matched by content rather than by name, and burst frames or resaved images compared by the pictures themselves.</p></div>
+      <div class="feature-card"><h3>Leftovers from removed apps</h3><p>Caches, preferences and support folders written by software that is no longer installed and has been untouched for a month.</p></div>
+      <div class="feature-card"><h3>Local copies of cloud files</h3><p>Files your cloud drive already holds in full. Only the local copy is removed — the file stays put and downloads again when opened.</p></div>
     </div>
   </section>
+
   <div class="divider"><hr></div>
+
+  <section class="band" id="faq">
+    <p class="section-title">Frequently asked questions</p>
+    <div class="faq">
+
+      <details open>
+        <summary>Why does it ask me to choose a folder?</summary>
+        <p>MSRX Clean is sandboxed. It cannot see anything on your computer until you hand it a folder, and it can never widen that grant by itself. Choosing your home folder lets it look there and nowhere else.</p>
+        <p>If you grant it nothing, it does nothing. That is the design, not a fault.</p>
+      </details>
+
+      <details>
+        <summary>Can I get a file back after removing it?</summary>
+        <p>Yes. Nothing is deleted outright — files move to the Trash, and every clean is written to a History you can open afterwards. One click restores everything in that entry to where it came from.</p>
+        <p>The one exception is emptying the Trash, which is permanent by definition and asks you to acknowledge that in writing before the button works.</p>
+      </details>
+
+      <details>
+        <summary>Is anything selected for me automatically?</summary>
+        <p>No. Nothing is ever ticked on your behalf. Every removal opens a review sheet listing exactly what will go, grouped by category, with a note on what you lose if it does.</p>
+      </details>
+
+      <details>
+        <summary>What does "Cloud Offload" actually do?</summary>
+        <p>It finds files your cloud drive already holds a complete, fully uploaded copy of, and asks the system to remove only the local copy. The file stays exactly where you put it and downloads again the next time you open it.</p>
+        <p>Nothing is deleted, so there is nothing to undo. Anything still syncing is skipped, and checked again at the moment of removal.</p>
+      </details>
+
+      <details>
+        <summary>A scan is taking a long time. Is it stuck?</summary>
+        <p>Probably not. Some passes are genuinely slow: comparing photos means decoding every image, and a synced Documents folder can hold hundreds of thousands of files.</p>
+        <p>Results now appear while the scan runs rather than only at the end, and every long pass shows what it is doing and how long it has been running. You can leave a screen and come back to it.</p>
+      </details>
+
+      <details>
+        <summary>Will it touch my photo or music library?</summary>
+        <p>No. Photo and music libraries, cloud containers, application bundles and system folders are never entered, and the rule is checked twice — once when a file is found, and again at the moment of removal.</p>
+      </details>
+
+      <details>
+        <summary>Does it need an internet connection?</summary>
+        <p>No. Everything works offline. The only network request the app ever makes is the connection speed check on the Network screen, and only when you press the button.</p>
+      </details>
+
+      <details>
+        <summary>I used to have OrionClean. What happened?</summary>
+        <p>MSRX Clean 2.0 is the same app under its proper name, rebuilt from scratch. If you owned OrionClean, this arrives as a free update — there is nothing to buy again and nothing to reinstall.</p>
+      </details>
+
+      <details>
+        <summary>How do I report a problem?</summary>
+        <p>Email <a href="mailto:mrinalsinghraja@gmail.com?subject=MSRX%20Clean%20support">mrinalsinghraja@gmail.com</a>. Telling me what you were doing and what you expected instead is usually enough. Every message is read.</p>
+      </details>
+
+    </div>
+
+    <div class="contact-box">
+      <h2>Still stuck?</h2>
+      <p>Write to <a href="mailto:mrinalsinghraja@gmail.com?subject=MSRX%20Clean%20support">mrinalsinghraja@gmail.com</a></p>
+      <p>Replies usually come within two business days.</p>
+      <div class="meta">
+        <div><strong>Version</strong>2.0</div>
+        <div><strong>Developer</strong>Mrinal Singh Raja</div>
+        <div><strong>Data collected</strong>None</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><hr></div>
+
   <footer>
-    <p class="footer-left">© 2025 MSRX. All rights reserved.</p>
+    <p class="footer-left">© 2026 MSRX · Mrinal Singh Raja</p>
     <div class="footer-right">
       <a href="privacy.html">Privacy Policy</a>
       <a href="mailto:mrinalsinghraja@gmail.com">Contact</a>

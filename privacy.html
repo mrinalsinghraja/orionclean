@@ -3,79 +3,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OrionClean Privacy Policy — MSRX</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>MSRX Clean Privacy Policy — MSRX</title>
+  <meta name="description" content="MSRX Clean collects no data. No account, no analytics, no telemetry, no crash reporting. Everything happens on your computer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #ffffff; --surface: #f5f5f7; --border: rgba(0,0,0,0.06); --text: #1d1d1f; --text2: #6e6e73; --text3: #a1a1a6; --gradient: linear-gradient(135deg, #00c4df 0%, #8b5cf6 100%); }
+    :root {
+      --bg: #ffffff; --surface: #f5f5f7; --border: rgba(0,0,0,0.08);
+      --text: #1d1d1f; --text2: #55555a; --text3: #6e6e73;
+      /* #8b5cf6 is 4.23:1 on white and fails body contrast. Links use 7.10:1. */
+      --link: #6d28d9;
+      --gradient: linear-gradient(135deg, #00c4df 0%, #8b5cf6 100%);
+    }
     body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; line-height: 1.7; }
+    a:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 4px; }
     nav { position: sticky; top: 0; background: rgba(255,255,255,0.88); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
-    .nav-inner { max-width: 800px; margin: 0 auto; padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-inner { max-width: 780px; margin: 0 auto; padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
     .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
     .nav-logo svg { width: 22px; height: 27px; }
     .nav-logo span { font-size: 15px; font-weight: 700; color: var(--text); }
     .nav-app { font-size: 13px; color: var(--text3); }
-    main { max-width: 800px; margin: 0 auto; padding: 56px 24px 80px; }
+    main { max-width: 780px; margin: 0 auto; padding: 52px 24px 72px; }
     .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text3); margin-bottom: 12px; }
-    h1 { font-size: 36px; font-weight: 800; letter-spacing: -0.02em; color: var(--text); margin-bottom: 8px; }
+    h1 { font-size: 36px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
     h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .subtitle { font-size: 16px; color: var(--text2); margin-bottom: 48px; }
-    h2 { font-size: 18px; font-weight: 600; color: var(--text); margin: 36px 0 12px; }
-    p { font-size: 15px; color: var(--text2); margin-bottom: 16px; }
-    ul { padding-left: 20px; margin-bottom: 16px; }
-    li { font-size: 15px; color: var(--text2); margin-bottom: 6px; }
-    .contact-box { background: var(--surface); border-radius: 16px; padding: 24px 28px; border: 1px solid var(--border); margin-top: 48px; }
+    .subtitle { font-size: 15px; color: var(--text3); margin-bottom: 36px; }
+    .headline { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px 26px; margin-bottom: 40px; }
+    .headline p { font-size: 17px; color: var(--text); margin: 0; font-weight: 500; }
+    h2 { font-size: 18px; font-weight: 700; color: var(--text); margin: 34px 0 10px; }
+    p { font-size: 15px; color: var(--text2); margin-bottom: 14px; }
+    ul { padding-left: 22px; margin-bottom: 14px; }
+    li { font-size: 15px; color: var(--text2); margin-bottom: 7px; }
+    li strong, p strong { color: var(--text); font-weight: 600; }
+    a { color: var(--link); }
+    .contact-box { background: var(--surface); border-radius: 16px; padding: 24px 28px; border: 1px solid var(--border); margin-top: 44px; }
     .contact-box p { margin-bottom: 8px; }
-    .contact-box a { color: #8b5cf6; text-decoration: none; font-weight: 500; }
-    footer { max-width: 800px; margin: 0 auto; padding: 24px 24px 40px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .contact-box a { font-weight: 500; text-decoration: none; }
+    .contact-box a:hover { text-decoration: underline; }
+    footer { max-width: 780px; margin: 0 auto; padding: 24px 24px 40px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
     footer span, footer a { font-size: 13px; color: var(--text3); text-decoration: none; }
     footer a:hover { color: var(--text2); }
+    @media (max-width: 600px) { main { padding: 36px 16px 56px; } h1 { font-size: 30px; } }
   </style>
 </head>
 <body>
   <nav>
     <div class="nav-inner">
       <a href="https://msrx.co.in" class="nav-logo">
-        <svg viewBox="0 0 100 120" fill="none"><defs><linearGradient id="g" x1="0" y1="0" x2="100" y2="120" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#00c4df"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs><path d="M6 110 L6 12 L50 62 L94 12 L94 110 L76 110 L76 46 L50 80 L24 46 L24 110 Z" fill="url(#g)"/></svg>
+        <svg viewBox="0 0 100 120" fill="none" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="100" y2="120" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#00c4df"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs><path d="M6 110 L6 12 L50 62 L94 12 L94 110 L76 110 L76 46 L50 80 L24 46 L24 110 Z" fill="url(#g)"/></svg>
         <span>MSRX</span>
       </a>
-      <span class="nav-app">OrionClean</span>
+      <span class="nav-app">MSRX Clean</span>
     </div>
   </nav>
+
   <main>
     <p class="eyebrow">Legal</p>
     <h1>Privacy <span>Policy</span></h1>
-    <p class="subtitle">Effective Date: January 1, 2025 &nbsp;&middot;&nbsp; OrionClean</p>
-    <h2>Overview</h2>
-    <p>OrionClean is developed by Mrinal Singh Raja (MSRX). We take privacy seriously and are committed to protecting your personal information. This policy explains what data we collect, how we use it, and your rights.</p>
-    <h2>Information We Collect</h2>
-    <p>We collect only what is necessary to provide OrionClean's functionality:</p>
+    <p class="subtitle">MSRX Clean · Effective 10 August 2026 · Supersedes the OrionClean policy</p>
+
+    <div class="headline">
+      <p>MSRX Clean collects no data of any kind. There is no account, no analytics, no telemetry and no crash reporting. Nothing about you or your files is transmitted anywhere, ever.</p>
+    </div>
+
+    <h2>What is collected</h2>
+    <p><strong>Nothing.</strong> This is not a promise to handle your data carefully — it is the absence of any collection to handle. The app has no server, no account system, and no analytics or crash-reporting library of any kind built into it.</p>
+    <p>This matches the app's privacy report on the App Store, which declares that no data is collected, and the privacy manifest shipped inside the app itself.</p>
+
+    <h2>What the app can see, and how</h2>
+    <p>MSRX Clean runs inside a sandbox. It cannot read anything on your computer until you explicitly grant it a folder, and it cannot widen that grant by itself.</p>
     <ul>
-      <li>Usage data to improve app performance (anonymized)</li>
-      <li>Crash reports to fix bugs (no personal identification)</li>
-      <li>Disk usage statistics (analyzed locally, never transmitted)</li>
+      <li>You choose the folder. The app sees that folder and nothing outside it.</li>
+      <li>File names, sizes and modification dates are read to work out what can be removed. They are shown on screen and then discarded.</li>
+      <li>Photo comparison happens entirely on your computer. Images are never uploaded, and no image ever leaves the device.</li>
+      <li>Photo and music libraries, cloud containers, application bundles and system folders are never entered.</li>
+      <li>Your grant is remembered between launches so you do not have to repeat it. Nothing else about your files is stored.</li>
     </ul>
-    <h2>Data Storage</h2>
-    <p>OrionClean analyzes your disk entirely on-device. We do not sell, rent, or share your personal information with third parties.</p>
-    <h2>Third-Party Services</h2>
-    <p>We may use the following third-party services:</p>
-    <ul>
-      <li><strong>Apple App Store</strong> — for app distribution and purchases</li>
-    </ul>
-    <h2>Children's Privacy</h2>
-    <p>Our apps are not directed to children under 13. We do not knowingly collect personal information from children.</p>
-    <h2>Changes to This Policy</h2>
-    <p>We may update this privacy policy. We will notify you of significant changes by updating the Effective Date above.</p>
+
+    <h2>Network use</h2>
+    <p>The app makes exactly one kind of network request, and only when you ask for it: the connection speed check on the Network screen, which downloads and uploads a fixed block of meaningless test data to measure throughput.</p>
+    <p>That test carries no information about you, your files or your computer. If you never press that button, the app never touches the network at all. Every other feature works fully offline.</p>
+
+    <h2>On-device intelligence</h2>
+    <p>The optional assistant runs on your computer using the system's own on-device model. Your questions are not sent to any server, including ours. If your computer does not support it, every other feature still works.</p>
+
+    <h2>Location</h2>
+    <p>The system will only reveal the name of the network you are joined to if an app has location access. MSRX Clean requests that permission for that single purpose, behind a button you have to press.</p>
+    <p>No coordinate is ever requested, read, stored or transmitted, and the app contains no code that asks for your position. Declining costs you nothing but the network's name.</p>
+
+    <h2>Payments and purchases</h2>
+    <p>MSRX Clean has no in-app purchases and no subscriptions. If you obtained the app through the App Store, the store handles distribution and any payment under its own privacy policy. We receive no payment details and no personal information from that process.</p>
+
+    <h2>Children</h2>
+    <p>The app is not directed at children and collects no personal information from anyone, of any age.</p>
+
+    <h2>Your rights</h2>
+    <p>Rights such as access, correction, export and erasure apply to data a company holds about you. We hold none, so there is nothing to request, correct, export or delete. Removing the app removes everything it ever stored, all of which was on your own computer.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>If this policy changes, the effective date above changes with it. Should MSRX Clean ever begin collecting anything at all, that would be stated here plainly and reflected in the app's App Store privacy report before the version that did so was released.</p>
+
     <div class="contact-box">
       <p><strong>Questions about privacy?</strong></p>
-      <p>Contact us at <a href="mailto:mrinalsinghraja@gmail.com">mrinalsinghraja@gmail.com</a></p>
+      <p>Contact <a href="mailto:mrinalsinghraja@gmail.com?subject=MSRX%20Clean%20privacy">mrinalsinghraja@gmail.com</a></p>
+      <p>Support and FAQ: <a href="index.html">MSRX Clean support</a></p>
       <p>More apps: <a href="https://msrx.co.in">msrx.co.in</a></p>
     </div>
   </main>
+
   <footer>
-    <span>&copy; 2025 MSRX &middot; Mrinal Singh Raja</span>
+    <span>© 2026 MSRX · Mrinal Singh Raja</span>
     <div style="display:flex;gap:20px">
-      <a href="index.html">OrionClean</a>
+      <a href="index.html">MSRX Clean</a>
       <a href="mailto:mrinalsinghraja@gmail.com">Contact</a>
       <a href="https://msrx.co.in">msrx.co.in</a>
     </div>
